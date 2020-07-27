@@ -27,29 +27,42 @@ public class Accumulator {
         but was: <coffee, bagels and >
      */
     public void main(String args[]) {
-        String input[] = {"Frodo", "Sam", "Aragorn", "Gimli", "Boromir", "Legolas", "Gandalf", "Merry", "Pippin"};
-        String sentence = "";
+        String input[]  = {"Frodo", "Sam", "Aragorn", "Gimli", "Boromir", "Legolas", "Gandalf", "Merry", "Pippin"};
+        String sentence = this.toSentence(input);
 
-        sentence = this.toSentence(input);
-
-
+        System.out.println(sentence);
     }
 
 
+    /*
+    In the space below, define and implement a method called toSentence. It takes as input an array of strings (String[])
+    and returns a string that contains all the elements of the array joined by a comma, with the last element joined by
+    "and".
+     */
     public String toSentence(String[] input) {
-      String sentence = "";
+        String sentence = "";
 
-      if(input.length == 0 || input[0] == ""){
-          return "";
-      }
+        if(input.length == 0 || input[0].equals("")){
+            return "";
+        }
 
-      for(int i = 0; i < input.length; i++){
-          System.out.println(input[i]);
-      }
+        for(int i = 0; i < input.length; i++){
+            System.out.println(input[i]);
 
+            // comma
+            if(i > 0 && i < input.length - 1){
+                sentence = sentence.concat(", ");
+            }
 
+            sentence = sentence.concat(input[i]);
 
-      System.out.println(sentence);
-      return sentence;
+            // and
+            if(i == input.length - 1){
+                sentence = sentence.concat(" and ");
+            }
+
+        }
+
+        return sentence;
     }
 }
